@@ -59,7 +59,7 @@ export default function BookmarkCard({ bookmark }: { bookmark: Bookmark }) {
                 >
                     Visit <ExternalLink className="w-4 h-4" />
                 </a>
-                <span className="text-[10px] text-slate-600 font-medium">
+                <span className="text-[10px] text-slate-600 font-medium" suppressHydrationWarning>
                     {new Date(bookmark.created_at).toLocaleDateString()}
                 </span>
             </div>
