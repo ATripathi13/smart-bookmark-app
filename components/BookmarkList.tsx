@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase'
 import BookmarkCard from './BookmarkCard'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface Bookmark {
     id: string
@@ -47,17 +48,23 @@ export default function BookmarkList({ initialBookmarks, userId }: { initialBook
 
     if (bookmarks.length === 0) {
         return (
-            <div className="text-center py-20 glass rounded-3xl">
-                <p className="text-slate-400 text-lg">No bookmarks yet. Add your first one above!</p>
-            </div>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-32 glass rounded-3xl border-dashed border-white/10"
+            >
+                <p className="text-slate-400 text-lg">Your library is empty. Let's add some links!</p>
+            </motion.div>
         )
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bookmarks.map((bookmark) => (
-                <BookmarkCard key={bookmark.id} bookmark={bookmark} />
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+            <AnimatePresence mode="popLayout">
+                {bookmarks.map((bookmark) => (
+                    <BookmarkCard key={bookmark.id} bookmark={bookmark} />
+                ))}
+            </AnimatePresence>
         </div>
     )
 }
