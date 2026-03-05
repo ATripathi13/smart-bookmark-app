@@ -56,4 +56,4 @@ npm run dev
 - **Supabase (Auth, Database, Realtime)**
 - **Tailwind CSS**
 - **Lucide React (Icons)**
-- **Framer Motion (Animations coming soon)**
+- **Framer Motion (Animations coming soon)**  (connect if you want to contribute)
